@@ -1,0 +1,59 @@
+<table border="1" style="text-align:center; width:100%;" >
+	<thead>
+		<tr>
+			<td style="text-align:center;">Jumlah</td>
+			<td style="text-align:center;" >Keterangan</td>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td style="background: yellow; color: black; text-align:center;" ><span id="positif"></span></td>
+			<td style="background: yellow; color: black; text-align:center;" >Positif</td>
+		</tr>
+		<tr>
+			<td style="background: green; color: white; text-align:center;" ><span id="sembuh"></span></td>
+			<td style=" background: green; color: white; text-align:center;" >Sembuh</td>
+		</tr>
+		<tr>
+			<td style="background: red; color: white; text-align:center;" ><span id="meninggal"></span></td>
+			<td style="background: red; color: white; text-align:center;">Meninggal</td>
+		</tr>
+		<tr>
+			<td colspan="2" style="text-align:center;" ><span id="date"></span></td>
+		</tr>
+	</tbody>
+</table>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+<script>
+$(document).ready(function(){
+var d = new Date();
+var month = new Array();
+  month[0] = "Januari";
+  month[1] = "Februari";
+  month[2] = "Maret";
+  month[3] = "April";
+  month[4] = "Mei";
+  month[5] = "Juni";
+  month[6] = "Juli";
+  month[7] = "Agustus";
+  month[8] = "September";
+  month[9] = "Oktober";
+  month[10] = "November";
+  month[11] = "Desember";
+
+$("#date").html(d.getDate() + " " + month[d.getMonth()] + " " + d.getFullYear());
+    $.ajax({async: true, cache: true, url: "https://api.kawalcorona.com/indonesia/", success: function(result){
+     $("#positif").html(result[0].positif);
+     $("#sembuh").html(result[0].sembuh);
+     $("#meninggal").html(result[0].meninggal);
+    }});
+});
+</script>
+
+<script>
+	$("#positif").html(result[0].positif);
+	$("#sembuh").html(result[0].sembuh);
+	$("#meninggal").html(result[0].meninggal);
+</script>
